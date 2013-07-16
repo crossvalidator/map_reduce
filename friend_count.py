@@ -2,25 +2,25 @@ import MapReduce
 import sys
 
 """
-Word Count Example in the Simple Python MapReduce Framework
+Counting friends exmaple in the Simple Python MapReduce Framework
 """
 
+#initializing the Map Reduce object
 mr = MapReduce.MapReduce()
 
 # =============================
 # Do not modify above this line
 
 def mapper(record):
-    # key: document identifier
-    # value: document contents
+    # key: friend 1
+    # value: friend 2
     key = record[0]
     value = record[1]
-    #words = value.split()
-    #for w in words:
+    
     mr.emit_intermediate(key, 1)
 
 def reducer(key, list_of_values):
-    # key: word
+    # key: person identifier
     # value: list of occurrence counts
     total = 0
     for v in list_of_values:

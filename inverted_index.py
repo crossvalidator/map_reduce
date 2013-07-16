@@ -2,9 +2,9 @@ import MapReduce
 import sys
 
 """
-Word Count Example in the Simple Python MapReduce Framework
+Inverted index Example in the Simple Python MapReduce Framework
 """
-
+#initializing the Map Reduce object
 mr = MapReduce.MapReduce()
 
 # =============================
@@ -21,12 +21,12 @@ def mapper(record):
 
 def reducer(key, list_of_values):
     # key: word
-    # value: list of occurrence counts
-    #total = 0
-    #for v in list_of_values:
-      #total += v
+    # value: list of document identifiers in which the word occurs
+   
+    # the same word could have appeard multiple times in a document - thus after the map phase, these could be duplicates
     no_duplicate_values = []
-    # i have tried to maintain the same order other wise this could have been done by list(set(list_of_values))
+
+    # I have tried to maintain the same order other wise this could have been done by list(set(list_of_values))
     for v in list_of_values:
         if v not in no_duplicate_values:
             no_duplicate_values.append(v)
